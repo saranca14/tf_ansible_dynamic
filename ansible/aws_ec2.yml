@@ -1,16 +1,9 @@
-# Example using filters, ignoring permission errors, and specifying the hostname precedence
+---
 plugin: aws_ec2
-# or you could use Jinja as:
-# boto_profile: "{{ lookup('env', 'AWS_PROFILE') | default('aws_profile', true) }}"
-# Populate inventory with instances in these regions
 regions:
   - ap-south-1
 filters:
-  # All instances with their `Environment` tag set to `dev`
-  tag:Name: kreybooks
-# Ignores 403 errors rather than failing
-strict_permissions: False
-# Note: I(hostnames) sets the inventory_hostname. To modify ansible_host without modifying
-# inventory_hostname use compose (see example below).
+  tag:Name:
+    - kreybooks
 compose:
   ansible_host: ip_address

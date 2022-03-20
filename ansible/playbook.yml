@@ -1,14 +1,14 @@
 ---
- - name: "Install Tools using AWS Inventory"
-   hosts: "tag_Name_kreybooks"
-   gather_facts: yes
-   become: yes
-  
-  vars_files:
-     - "vars/all.yml"
-  
-  tasks:
-     - name: "Install http software"
-       yum:
-         name: httpd>=2.4
-         state: present
+  - name: "Install Tools using AWS Inventory"
+    hosts: tag_group_rmq
+    gather_facts: yes
+    become: yes
+    
+    vars_files:
+      - "vars/all.yml"
+    
+    tasks:
+      - name: "Install http software"
+        yum:
+          name: httpd>=2.4
+          state: present
